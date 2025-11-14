@@ -1,5 +1,2 @@
-[build]
-builder = "python"
-
-[deploy]
-start = "gunicorn src.wsgi:app"
+[env]
+PYTHON_VERSION = "3.11"
