@@ -3,7 +3,6 @@ from flask_cors import CORS
 from src.config import config
 from src.routes import usuario
 
-
 def create_app():
     app = Flask(__name__)
     
@@ -15,7 +14,9 @@ def create_app():
 
     # Registrar rutas
     app.register_blueprint(usuario.main, url_prefix='/api/usuario')
-
+    @app.route("/")
+    def home():
+        return {"message": "API funcionando"}, 200
     # Errores
     @app.errorhandler(404)
     def page_not_found(error):
@@ -27,4 +28,4 @@ def create_app():
 app = create_app()
 
 #if __name__ == "__main__":
-#    app.run()
+ #   app.run()
