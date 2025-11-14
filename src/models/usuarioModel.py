@@ -8,7 +8,7 @@ class usuarioModel():
             connection=get_connection()
             usuarios = []
             with connection.cursor() as cursor:
-                cursor.execute("SELECT id, nombre, apellidos, usuario, clave, perfil, fecha_nacimiento, genero, correo, contacto, direccion FROM USUARIO ORDER BY nombre ASC")
+                cursor.execute("SELECT id, nombre, apellidos, usuario, clave, perfil, fecha_nacimiento, genero, correo, contacto, direccion FROM usuario ORDER BY nombre ASC")
                 resultset=cursor.fetchall()
                 for row in resultset:
                     user = User(row[0], row[1], row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9],row[10])
