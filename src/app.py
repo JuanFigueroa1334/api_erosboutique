@@ -25,7 +25,7 @@ def create_app():
     return app
 
 # Flask CLI con local run
-app = create_app()
+#app = create_app()
 
 #if __name__ == "__main__":
  #   app.run()
