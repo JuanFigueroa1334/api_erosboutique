@@ -25,7 +25,7 @@ class usuarioModel():
             connection=get_connection()
 
             with connection.cursor() as cursor:
-                cursor.execute("SELECT id, nombre, apellidos, usuario, clave, perfil, fecha_nacimiento, genero, correo, contacto, direccion FROM USUARIO WHERE id = %s",(id))
+                cursor.execute("SELECT id, nombre, apellidos, usuario, clave, perfil, fecha_nacimiento, genero, correo, contacto, direccion FROM USUARIO WHERE id = %s",(id,))
                 row=cursor.fetchone()
                 user=None
                 if row != None:
@@ -42,9 +42,9 @@ class usuarioModel():
             connection=get_connection()
 
             with connection.cursor() as cursor:
-                cursor.execute("""INSER INTO USER (id, nombre, apellidos, usuario, clave, perfil, fecha_nacimiento, genero, correo, contacto, direccion) 
-                               VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,)""",
-                               (user.id, user.nombre,user.apellidos,user.usuario,user.clave,user.perfil,user.fecha_nacimiento,user.genero,user.correo,user.contacto,user.direccion))
+                cursor.execute("""INSER INTO usuario (nombre, apellidos, usuario, clave, perfil, fecha_nacimiento, genero, correo, contacto, direccion) 
+                               VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                               (user.nombre,user.apellidos,user.usuario,user.clave,user.perfil,user.fecha_nacimiento,user.genero,user.correo,user.contacto,user.direccion))
                 affected_rows = cursor.rowcount
                 connection.commit()                
             connection.close()
@@ -74,7 +74,7 @@ class usuarioModel():
             connection=get_connection()
 
             with connection.cursor() as cursor:
-                cursor.execute("DELETE FROM usuario WHERE ID = %s", (id))
+                cursor.execute("DELETE FROM usuario WHERE ID = %s", (id,))
                 affected_rows = cursor.rowcount
                 connection.commit()                
             connection.close()

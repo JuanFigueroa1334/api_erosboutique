@@ -1,10 +1,10 @@
 from src.utils.DateFormat import DateFormat
 class User():
-    def __init__(self, id, nombre=None, apellido=None, usuario=None, clave=None, perfil=None, 
+    def __init__(self, id, nombre=None, apellidos=None, usuario=None, clave=None, perfil=None, 
                  fecha_nacimiento=None, genero=None, correo=None, contacto=None, direccion=None):
         self.id = id
         self.nombre = nombre
-        self.apellido = apellido
+        self.apellidos = apellidos
         self.usuario = usuario
         self.clave = clave
         self.perfil = perfil
@@ -18,7 +18,7 @@ class User():
         return {
             'id': self.id,
             'nombre': self.nombre,
-            'apellido': self.apellido,
+            'apellidos': self.apellidos,
             'usuario': self.usuario,
             'clave': self.clave,
             'perfil': self.perfil,
