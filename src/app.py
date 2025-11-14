@@ -3,6 +3,7 @@ from flask_cors import CORS
 from src.config import config
 from src.routes import usuario
 
+
 def create_app():
     app = Flask(__name__)
     
@@ -25,5 +26,5 @@ def create_app():
 # Flask CLI con local run
 app = create_app()
 
-if __name__ == "__main__":
-    app.run()
+#if __name__ == "__main__":
+#    app.run()

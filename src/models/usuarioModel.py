@@ -42,7 +42,7 @@ class usuarioModel():
             connection=get_connection()
 
             with connection.cursor() as cursor:
-                cursor.execute("""INSER INTO usuario (nombre, apellidos, usuario, clave, perfil, fecha_nacimiento, genero, correo, contacto, direccion) 
+                cursor.execute("""INSERT INTO usuario (nombre, apellidos, usuario, clave, perfil, fecha_nacimiento, genero, correo, contacto, direccion) 
                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
                                (user.nombre,user.apellidos,user.usuario,user.clave,user.perfil,user.fecha_nacimiento,user.genero,user.correo,user.contacto,user.direccion))
                 affected_rows = cursor.rowcount
