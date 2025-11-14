@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_cors import CORS
-from src.config import config
+from config import config
 #routes
-from src.routes import usuario
+from routes import usuario
 
 app=Flask(__name__)
 CORS(app, resources={"*":{"origins":"http://http://localhost:5173"}})

@@ -1,4 +1,4 @@
-from src.utils.DateFormat import DateFormat
+from utils.DateFormat import DateFormat
 class User():
     def __init__(self, id, nombre=None, apellido=None, usuario=None, clave=None, perfil=None, 
                  fecha_nacimiento=None, genero=None, correo=None, contacto=None, direccion=None):
