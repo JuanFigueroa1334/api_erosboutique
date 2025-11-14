@@ -5,7 +5,7 @@ from src.config import config
 from src.routes import usuario
 
 app=Flask(__name__)
-CORS(app, resources={"*":{"origins":"http://http://localhost:5173"}})
+CORS(app, resources={r"*": {"origins": "*"}})
 
 def page_not_found(error):
     return "<h1>Not found page</h1>", 404
