@@ -10,8 +10,8 @@ def create_app():
     CORS(app, resources={r"*": {"origins": "*"}})
 
     # Cargar configuración
-    app.config.from_object(config['development'])
-
+    #app.config.from_object(config['development'])
+    app.config.from_object(config['production'])
     # Registrar rutas
     app.register_blueprint(usuario.main, url_prefix='/api/usuario')
     @app.route("/")
