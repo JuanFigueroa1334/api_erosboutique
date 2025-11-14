@@ -1,6 +1,6 @@
 from src.utils.DateFormat import DateFormat
 class User():
-    def __init__(self, id, nombre=None, apellidos=None, usuario=None, clave=None, perfil=None, 
+    def __init__(self, id=None, nombre=None, apellidos=None, usuario=None, clave=None, perfil=None, 
                  fecha_nacimiento=None, genero=None, correo=None, contacto=None, direccion=None):
         self.id = id
         self.nombre = nombre
