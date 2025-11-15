@@ -12,13 +12,3 @@ def get_users():
         return jsonify(usuarios)
     except Exception as ex:
         return jsonify({'message': str(ex)}),500
-@main.route("/check")
-def check():
-    import os
-    return {
-        "host": os.getenv("PGSQL_HOST"),
-        "port": os.getenv("PGSQL_PORT"),
-        "pwd": os.getenv("PGSQL_PASSWORD") is not None,
-        "user": os.getenv("PGSQL_USER")
-    }
- 

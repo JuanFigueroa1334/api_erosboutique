@@ -1,9 +1,0 @@
-[build]
-builder = "paketobuildpacks/builder:base"
-buildCommand = "pip install -r requirements.txt"
-
-[deploy]
-startCommand = "gunicorn src.wsgi:app --log-level debug --timeout 120"
-
-[env]
-PYTHON_VERSION="3.11"
