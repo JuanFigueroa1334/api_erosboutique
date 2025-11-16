@@ -85,10 +85,15 @@ class usuarioModel():
     #login
     @classmethod
     def login(cls, usuario, clave):
-        cursor = get_connection()
-        cursor.execute("SELECT * FROM usuario WHERE usuario=%s AND clave=%s", (usuario, clave))
-        row = cursor.fetchone()
+        try:
+            connection=get_connection()
+            usuarios = []
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM usuario WHERE usuario=%s AND clave=%s", (usuario, clave))
+                row = cursor.fetchone()
 
-        if row:
-            return User(*row)
-        return None
+                    
+            connection.close()
+            return User(*row) 
+        except Exception as ex:
+            raise Exception(ex)
