@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 
-from models.entities.User import User
-from models.usuarioModel import usuarioModel
+from src.models.entities.User import User
+from src.models.usuarioModel import usuarioModel
 
 main = Blueprint('usuario_blueprint', __name__)
 

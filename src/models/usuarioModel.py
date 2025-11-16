@@ -1,5 +1,5 @@
 from database.db import get_connection
-from .entities.User import usuario
+from .entities.User import User
 
 class usuarioModel():
     @classmethod
@@ -11,7 +11,7 @@ class usuarioModel():
                 cursor.execute("SELECT id, nombre, apellidos, usuario, clave, perfil, fecha_nacimiento, genero, correo, contacto, direccion FROM usuario ORDER BY nombre ASC")
                 resultset=cursor.fetchall()
                 for row in resultset:
-                    user = usuario(row[0], row[1], row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9],row[10])
+                    user = User(row[0], row[1], row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9],row[10])
                     usuarios.append(user.to_JSON())
                     
             connection.close()
@@ -29,7 +29,7 @@ class usuarioModel():
                 row=cursor.fetchone()
                 user=None
                 if row != None:
-                    user = usuario(row[0], row[1], row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9],row[10])
+                    user = User(row[0], row[1], row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9],row[10])
                     user = user.to_JSON()
             connection.close()
             return user
