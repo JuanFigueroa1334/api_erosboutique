@@ -10,6 +10,6 @@ def get_users():
     try:
         #usuarios=usuarioModel.get_usuarios()
         #return jsonify(usuarios)
-        return "exitoso"
+        return "exitoso", 200
     except Exception as ex:
         return jsonify({'message': str(ex)}),500
