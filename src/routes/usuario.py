@@ -8,7 +8,8 @@ main = Blueprint('usuario_blueprint', __name__)
 @main.route('/')
 def get_users():
     try:
-        usuarios=usuarioModel.get_usuarios()
-        return jsonify(usuarios)
+        #usuarios=usuarioModel.get_usuarios()
+        #return jsonify(usuarios)
+        return "exitoso"
     except Exception as ex:
         return jsonify({'message': str(ex)}),500
