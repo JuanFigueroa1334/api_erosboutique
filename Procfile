@@ -1,1 +1,1 @@
-web: gunicorn --chdir src wsgi:app --workers 1 --log-level debug
+web: gunicorn --chdir src wsgi:app --workers 1 --log-level debug --timeout 60
