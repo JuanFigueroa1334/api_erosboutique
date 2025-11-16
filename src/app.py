@@ -12,22 +12,16 @@ def create_app():
     # Cargar configuración
     #app.config.from_object(config['development'])
     app.config.from_object(config['production'])
+    
     # Registrar rutas
     app.register_blueprint(usuario.main, url_prefix='/api/usuario')
+    
     @app.route("/")
     def home():
-        # *** AÑADE ESTA LÍNEA TEMPORALMENTE ***
-        # Importa aquí para evitar errores de importación circular
-        from src.database.db import get_connection 
-        
-        # Intenta obtener la conexión
-        try:
-            conn = get_connection()
-            conn.close()
-            return {"message": "API y DB funcionando correctamente"}, 200
-        except Exception as ex:
-            # Si falla, devuelve un 500 y el mensaje de error.
-            return {"message": f"API funcionando, pero FALLÓ CONEXIÓN DB: {str(ex)}"}, 500
+        # --- CÓDIGO MODIFICADO ---
+        # Se ha eliminado el bloque de prueba de conexión a DB (try/except)
+        return {"message": "API funcionando - Prueba Pura Exitosa"}, 200
+        # ------------------------
         
     # Errores
     @app.errorhandler(404)
