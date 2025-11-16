@@ -16,7 +16,19 @@ def create_app():
     app.register_blueprint(usuario.main, url_prefix='/api/usuario')
     @app.route("/")
     def home():
-        return {"message": "API funcionando"}, 200
+        # *** AÑADE ESTA LÍNEA TEMPORALMENTE ***
+        # Importa aquí para evitar errores de importación circular
+        from src.database.db import get_connection 
+        
+        # Intenta obtener la conexión
+        try:
+            conn = get_connection()
+            conn.close()
+            return {"message": "API y DB funcionando correctamente"}, 200
+        except Exception as ex:
+            # Si falla, devuelve un 500 y el mensaje de error.
+            return {"message": f"API funcionando, pero FALLÓ CONEXIÓN DB: {str(ex)}"}, 500
+        
     # Errores
     @app.errorhandler(404)
     def page_not_found(error):
