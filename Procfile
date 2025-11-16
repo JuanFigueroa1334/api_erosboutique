@@ -1,1 +1,1 @@
-web: gunicorn src.wsgi:app --workers 1 --log-level debug --error-logfile -
+web: gunicorn --bind 0.0.0.0:8080 --workers 1 --log-level debug src.wsgi:app

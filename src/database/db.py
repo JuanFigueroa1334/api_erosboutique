@@ -3,17 +3,10 @@
 import psycopg2
 from psycopg2 import DatabaseError
 from decouple import config
-import logging # <-- Importar el módulo de logging
-
-# Configurar un logger (opcional, pero buena práctica)
-# Aunque Gunicorn ya configura un logger básico para stdout/stderr
-# usarlo explícitamente es mejor.
-# logging.basicConfig(level=logging.INFO) 
-# logger = logging.getLogger(__name__)
+import sys # <-- Importar sys
 
 def get_connection():
-    # logger.info("Intentando conexión a PostgreSQL...")
-    print("Intentando conexión a PostgreSQL...") # Dejar el print para un feedback rápido
+    print("Intentando conexión a PostgreSQL...") 
     try:
         connection = psycopg2.connect(
             host=config('PGSQL_HOST'),
@@ -26,16 +19,12 @@ def get_connection():
         return connection
         
     except DatabaseError as ex:
-        # Usar logging.error o simplemente print() la información de la excepción
-        # Al usar print() o stderr, Railway capturará el output.
-        print("-" * 50)
-        print("🚨 ERROR FATAL DE CONEXIÓN A POSTGRESQL 🚨")
-        print(f"Error: {ex}")
-        print("Verifica PGSQL_HOST, PGSQL_PORT y las credenciales.")
-        print("-" * 50)
+        # Usar sys.stderr.write para garantizar que el error sea visible
+        sys.stderr.write("-" * 50 + "\n")
+        sys.stderr.write("🚨 ERROR FATAL DE CONEXIÓN A POSTGRESQL 🚨\n")
+        sys.stderr.write(f"Error: {ex}\n")
+        sys.stderr.write("Verifica PGSQL_HOST, PGSQL_PORT y las credenciales.\n")
+        sys.stderr.write("-" * 50 + "\n")
         
-        # Opcionalmente, puedes usar:
-        # logging.error("Error al conectar con PostgreSQL:", exc_info=True)
-        
-        # Esta línea es CLAVE: asegura que la traza completa se propague
+        # Esta línea levantará el error para que Flask/Gunicorn lo maneje
         raise ex
