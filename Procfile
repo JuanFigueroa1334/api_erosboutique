@@ -1,1 +1,1 @@
-web: gunicorn src.wsgi:app
+web: gunicorn src.wsgi:app --workers 1 --log-level debug --error-logfile -
