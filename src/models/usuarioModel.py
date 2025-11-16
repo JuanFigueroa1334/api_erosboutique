@@ -1,4 +1,4 @@
-from database.db import get_connection
+from src.database.db import get_connection
 from .entities.User import User
 
 class usuarioModel():
@@ -81,3 +81,14 @@ class usuarioModel():
             return affected_rows
         except Exception as ex:
             raise Exception(ex)
+        
+    #login
+    @classmethod
+    def login(cls, usuario, clave):
+        cursor = get_connection()
+        cursor.execute("SELECT * FROM usuario WHERE usuario=%s AND clave=%s", (usuario, clave))
+        row = cursor.fetchone()
+
+        if row:
+            return User(*row)
+        return None
