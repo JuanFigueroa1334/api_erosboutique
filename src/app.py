@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from src.config import config
 from src.routes import usuario
+from src.routes import opinion
 
 def create_app():
     app = Flask(__name__)
@@ -15,6 +16,7 @@ def create_app():
     
     # Registrar rutas
     app.register_blueprint(usuario.main, url_prefix='/api/usuario')
+    app.register_blueprint(opinion.main, url_prefix='/api/opinion')
     
     @app.route("/")
     def home():
@@ -34,4 +36,4 @@ def create_app():
 #app = create_app()
 
 #if __name__ == "__main__":
-  #  app.run()
+ #   app.run()
