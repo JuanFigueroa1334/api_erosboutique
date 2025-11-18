@@ -65,7 +65,7 @@ def update_user(id):
         affected_rows = usuarioModel.update_usuario(user)
         if affected_rows == 1:
             return jsonify({
-                'message': f"Usuario '{user.nombre}' actualizado exitosamente",
+                'message': "Usuario actualizado",
                 'id': user.id
             }), 200
         else:
