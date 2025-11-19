@@ -122,7 +122,7 @@ class ProductoModel():
                     SET nombre=%s, descripcion=%s, precio=%s, costo=%s, marca=%s, stock=%s
                     WHERE id=%s
                 """, (producto.nombre, producto.descripcion, producto.precio,
-                      producto.costo, producto.marca, producto.id, producto.stock))
+                      producto.costo, producto.marca, producto.stock, producto.id))
 
                 # Eliminar imágenes anteriores
                 cursor.execute("""
