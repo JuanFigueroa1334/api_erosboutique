@@ -3,6 +3,7 @@ from flask_cors import CORS
 from src.config import config
 from src.routes import usuario
 from src.routes import opinion
+from src.routes import producto
 
 def create_app():
     app = Flask(__name__)
@@ -17,6 +18,7 @@ def create_app():
     # Registrar rutas
     app.register_blueprint(usuario.main, url_prefix='/api/usuario')
     app.register_blueprint(opinion.main, url_prefix='/api/opinion')
+    app.register_blueprint(producto.main, url_prefix='/api/producto')
     
     @app.route("/")
     def home():
