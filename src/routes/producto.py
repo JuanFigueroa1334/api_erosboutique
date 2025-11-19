@@ -42,7 +42,8 @@ def add_producto():
             data["descripcion"],
             data["precio"],
             data["costo"],
-            data["marca"]
+            data["marca"],
+            data["stock"]
         )
 
         imagenes = data.get("imagenes", [])
@@ -68,7 +69,8 @@ def update_producto(id):
             data["descripcion"],
             data["precio"],
             data["costo"],
-            data["marca"]
+            data["marca"],
+            data["stock"],
         )
 
         imagenes = data.get("imagenes", [])

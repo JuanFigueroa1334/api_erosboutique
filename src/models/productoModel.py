@@ -14,7 +14,7 @@ class ProductoModel():
             productos = []
             with connection.cursor() as cursor:
                 cursor.execute("""
-                    SELECT id, nombre, descripcion, precio, costo, marca 
+                    SELECT id, nombre, descripcion, precio, costo, marca, stock
                     FROM producto ORDER BY nombre ASC
                 """)
                 rows = cursor.fetchall()
@@ -50,7 +50,7 @@ class ProductoModel():
             connection = get_connection()
             with connection.cursor() as cursor:
                 cursor.execute("""
-                    SELECT id, nombre, descripcion, precio, costo, marca
+                    SELECT id, nombre, descripcion, precio, costo, marca, stock
                     FROM producto
                     WHERE id = %s
                 """, (id,))
@@ -87,11 +87,11 @@ class ProductoModel():
             connection = get_connection()
             with connection.cursor() as cursor:
                 cursor.execute("""
-                    INSERT INTO producto (nombre, descripcion, precio, costo, marca)
-                    VALUES (%s, %s, %s, %s, %s)
+                    INSERT INTO producto (nombre, descripcion, precio, costo, marca, stock)
+                    VALUES (%s, %s, %s, %s, %s, %s)
                     RETURNING id
                 """, (producto.nombre, producto.descripcion, producto.precio,
-                      producto.costo, producto.marca))
+                      producto.costo, producto.marca, producto.stock))
 
                 new_id = cursor.fetchone()[0]
 
@@ -119,10 +119,10 @@ class ProductoModel():
             with connection.cursor() as cursor:
                 cursor.execute("""
                     UPDATE producto
-                    SET nombre=%s, descripcion=%s, precio=%s, costo=%s, marca=%s
+                    SET nombre=%s, descripcion=%s, precio=%s, costo=%s, marca=%s, stock=%s
                     WHERE id=%s
                 """, (producto.nombre, producto.descripcion, producto.precio,
-                      producto.costo, producto.marca, producto.id))
+                      producto.costo, producto.marca, producto.id, producto.stock))
 
                 # Eliminar imágenes anteriores
                 cursor.execute("""
